@@ -1,0 +1,4 @@
+
+
+foi gerado um codigo através do comando:
+docker run --rm jc5x/firefly-iii php artisan key:generate --show
