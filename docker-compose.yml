@@ -7,7 +7,7 @@ services:
     container_name: firefly_iii_core
     restart: always
     volumes:
-      - /srv/volumes/app_upload/_data:/var/www/html/storage/upload
+      - /srv/volumes/fireflyiii/app_upload/_data:/var/www/html/storage/upload
     
     env_file: .env
 
@@ -23,7 +23,7 @@ services:
     restart: always
     env_file: .db.env
     volumes:
-      - /srv/volumes/db/_data:/var/lib/mysql
+      - /srv/volumes/fireflyiii/db/_data:/var/lib/mysql
 
   cron:
     #
