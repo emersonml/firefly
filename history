@@ -1,4 +1,9 @@
+https://github.com/firefly-iii/docker/blob/main/docker-compose.yml
+
 
 
 foi gerado um codigo através do comando:
 docker run --rm jc5x/firefly-iii php artisan key:generate --show
+
+
+HOSTNAME=emerson_fireflyiii
