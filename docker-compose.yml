@@ -16,7 +16,7 @@ services:
       - .db.env
     volumes:
       # - db_data:/var/lib/postgresql/data
-      - /srv/volumes/fireflyiii-${ESTANCIA}/db/_data:/var/lib/postgresql/data
+      - /srv/volumes/fireflyiii-${INSTANCIA}/db/_data:/var/lib/postgresql/data
 
   cron:
     image: alpine
