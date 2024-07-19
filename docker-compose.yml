@@ -3,13 +3,19 @@ version: '3.7'
 services:
   app:
     image: fireflyiii/core:latest
-    hostname: ${INSTANCIA}-firefly
+    hostname: ${INSTANCIA}.firefly
     env_file:
       - .env
     # ports:
     #   - "${PORT_APP}:8080"
+
+    devices:
+      - "/dev/rtc:/dev/rtc:ro"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"  # DATE
     depends_on:
       - db
+
 
   db:
     image: postgres:13
