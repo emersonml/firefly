@@ -16,18 +16,21 @@ services:
     depends_on:
       - db
 
-
   db:
     image: postgres:13
     env_file:
       - .db.env
     volumes:
       # - db_data:/var/lib/postgresql/data
+      - "/etc/localtime:/etc/localtime:ro"  # DATE      
       - /srv/volumes/firefly-${INSTANCIA}/db/_data:/var/lib/postgresql/data
 
   cron:
     image: alpine
-    command: sh -c "echo '*/1 * * * * wget -qO- http://${INSTANCIA}-firefly:8080/api/v1/cron/${APP_KEY}' | crontab - && crond -f -L /dev/stdout"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"  # DATE
+    command: sh -c "echo '*/1 * * * * wget -qO- http://${INSTANCIA}.firefly:8080/api/v1/cron/${APP_KEY}' | crontab - && crond -f -L /dev/stdout"  #a cada 1 dia
+    # command: sh -c "echo '0 3 * * * wget -qO- http://${INSTANCIA}.firefly:8080/api/v1/cron/${APP_KEY}' | crontab - && crond -f -L /dev/stdout"  #a cada 1 hora
     depends_on:
       - app
 
